@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services\Openwather;
+namespace App\Services\Openweather;
 
 use Illuminate\Support\Facades\Http;
 
-class Openwather{
+class Openweather{
 
     public static function getHumidityFromOpenwether( $lng, $lat )
     {
