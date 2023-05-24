@@ -19,3 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('get-all', 'HumidityController@index');
 Route::post('insert-log', 'HumidityController@store');
+Route::post('get-humidity', 'HumidityController@getHumidity');
+

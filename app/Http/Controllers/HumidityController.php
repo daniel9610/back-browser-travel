@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repositories\HumidityRepository;
+use App\Services\Openweather\Openweather;
 
 class HumidityController extends Controller
 {
@@ -27,6 +28,14 @@ class HumidityController extends Controller
     {
         $humidity = $this->humidities->store($request);
         return $humidity;
+    }
+
+    public function getHumidity(Request $request)
+    {
+        $lng = $request->lng;
+        $lat = $request->lat;
+        $service_results = Openweather::getHumidityFromOpenwether($lng, $lat);
+        return response()->json($service_results);
     }
 
 }
