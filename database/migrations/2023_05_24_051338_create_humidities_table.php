@@ -14,7 +14,7 @@ class CreateHumiditiesTable extends Migration
     public function up()
     {
         Schema::create('humidities', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('place_name');
             $table->string('lng');
             $table->string('lat');
