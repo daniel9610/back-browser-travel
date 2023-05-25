@@ -8,7 +8,7 @@ class Openweather{
     public static function getHumidityFromOpenwether( $lng, $lat )
     {
         $bearer = env('OPENWEATHER_ID');
-        $url = 'http://api.openweathermap.org/data/2.5/weather&lng='.$lng.'&lat='.$lat.'&appid='.$bearer;
+        $url = 'http://api.openweathermap.org/data/2.5/weather?lat='.$lat.'&lon='.$lng.'&appid='.$bearer;
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
