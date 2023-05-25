@@ -37,8 +37,8 @@ class HumidityController extends Controller
         $service_results = Openweather::getHumidityFromOpenwether($lng, $lat);
         if(isset($service_results->cod)){
             if($service_results->cod == 200){
-                $place_name = isset($service_results->name) ?? null;
-                $humidity = isset($service_results->main->humidity) ?? null;
+                $place_name = $service_results->name;
+                $humidity = $service_results->main->humidity;
                 $humidity_log = $this->humidities->store($request, $place_name, $humidity);
                 return response()->json($humidity_log);
             }  
