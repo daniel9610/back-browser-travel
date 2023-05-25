@@ -35,6 +35,12 @@ class HumidityController extends Controller
         $lng = $request->lng;
         $lat = $request->lat;
         $service_results = Openweather::getHumidityFromOpenwether($lng, $lat);
+        if($service_results->code == 200){
+            $place_name = isset($service_results->name) ?? null;
+            $humidity = isset($service_results->main->humidity) ?? null;
+            $humidity_log = $this->humidities->store($request, $place_name, $humidity);
+            return response()->json($humidity_log);
+        }
         return response()->json($service_results);
     }
 
