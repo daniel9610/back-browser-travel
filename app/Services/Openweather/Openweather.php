@@ -2,18 +2,24 @@
 
 namespace App\Services\Openweather;
 
-use GuzzleHttp\Client as GuzzleClient;
 
 class Openweather{
 
     public static function getHumidityFromOpenwether( $lng, $lat )
     {
-        $client = new GuzzleClient();
         $bearer = env('OPENWEATHER_ID');
-        $link = 'https://api.openweathermap.org/data/3.0/onecall&lng='.$lng.'&lat='.$lat.'&appid='.$bearer;
-        $response = GuzzleClient::request('GET', $link);
-        $bodyresponcs = $response->getBody();
-        $result = json_decode($bodyresponcs);
+        $url = 'https://api.openweathermap.org/data/3.0/onecall&lng='.$lng.'&lat='.$lat.'&appid='.$bearer;
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+   
+        $response = curl_exec($ch);
+        $err = curl_error($ch);  //if you need
+        curl_close($ch);
+
+        $result = json_decode($response);
         return $result;
     }
 
