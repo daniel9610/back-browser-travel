@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 echo "Running composer"
-composer require guzzlehttp/guzzle
 composer global require hirak/prestissimo
 composer install --no-dev --working-dir=/var/www/html
 
