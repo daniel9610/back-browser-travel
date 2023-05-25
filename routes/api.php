@@ -16,8 +16,9 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::get('get-all', 'HumidityController@index');
-Route::post('insert-log', 'HumidityController@store');
-Route::post('get-humidity', 'HumidityController@getHumidity');
+Route::middleware(['cors'])->group(function () {
+    Route::get('get-all', 'HumidityController@index');
+    Route::post('insert-log', 'HumidityController@store');
+    Route::post('get-humidity', 'HumidityController@getHumidity');
+});
 
