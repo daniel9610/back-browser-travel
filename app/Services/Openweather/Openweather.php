@@ -2,7 +2,6 @@
 
 namespace App\Services\Openweather;
 
-
 class Openweather{
 
     public static function getHumidityFromOpenwether( $lng, $lat )

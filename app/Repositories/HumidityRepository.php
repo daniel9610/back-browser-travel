@@ -9,7 +9,7 @@ class HumidityRepository
 {
     public function index()
     {
-        $data = Humidity::all();
+        $data = Humidity::paginate(20);
         return $data;
     }
 
