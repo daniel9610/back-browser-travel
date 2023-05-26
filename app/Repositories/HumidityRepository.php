@@ -13,12 +13,12 @@ class HumidityRepository
         return $data;
     }
 
-    public function store($data, $placename, $humidity)
+    public function store($lng, $lat, $placename, $humidity)
     {
         $humidity_log = new Humidity;
         $humidity_log->place_name = $placename;
-        $humidity_log->lng = $data->lng;
-        $humidity_log->lat = $data->lat;
+        $humidity_log->lng = $lng;
+        $humidity_log->lat = $lat;
         $humidity_log->humidity = $humidity;
         $humidity_log->save();
         return $humidity_log;

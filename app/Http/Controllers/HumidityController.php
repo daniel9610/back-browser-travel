@@ -37,7 +37,7 @@ class HumidityController extends Controller
             if($service_results->cod == 200){
                 $place_name = $service_results->name;
                 $humidity = $service_results->main->humidity;
-                $humidity_log = $this->humidities->store($request, $place_name, $humidity);
+                $humidity_log = $this->humidities->store($lng, $lat, $place_name, $humidity);
                 return response()->json($humidity_log);
             }  
         }
