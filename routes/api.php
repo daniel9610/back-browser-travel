@@ -19,6 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::middleware(['cors'])->group(function () {
     Route::get('get-all', 'HumidityController@index');
     Route::post('insert-log', 'HumidityController@store');
-    Route::post('get-humidity', 'HumidityController@getHumidity');
+    // Route::post('get-humidity', 'HumidityController@getHumidity');
+    Route::get('get-humidity-2/{lng}/{lat}', 'HumidityController@getHumidity');
 });
 

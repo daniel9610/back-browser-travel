@@ -30,10 +30,8 @@ class HumidityController extends Controller
         return $humidity;
     }
 
-    public function getHumidity(Request $request)
+    public function getHumidity( $lng, $lat )
     {
-        $lng = $request->lng;
-        $lat = $request->lat;
         $service_results = Openweather::getHumidityFromOpenwether($lng, $lat);
         if(isset($service_results->cod)){
             if($service_results->cod == 200){
