@@ -32,7 +32,7 @@ class HumidityController extends Controller
 
     public function destroy($id)
     {
-        $humidity = $this->humidities->delete($request);
+        $humidity = $this->humidities->delete($id);
         return $humidity;
     }
 
