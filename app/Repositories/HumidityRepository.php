@@ -23,4 +23,12 @@ class HumidityRepository
         $humidity_log->save();
         return $humidity_log;
     }
+
+    public function delete($id)
+    {
+        $humidity = Humidity::find($id);
+        $humidity->delete();
+        return response("Información eliminada correctamente", 200);
+    }
+  
 }

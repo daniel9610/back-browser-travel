@@ -30,6 +30,13 @@ class HumidityController extends Controller
         return $humidity;
     }
 
+    public function destroy($id)
+    {
+        $humidity = $this->humidities->delete($request);
+        return $humidity;
+    }
+
+
     public function getHumidity( $lng, $lat )
     {
         $service_results = Openweather::getHumidityFromOpenwether($lng, $lat);
